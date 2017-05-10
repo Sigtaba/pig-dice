@@ -26,8 +26,9 @@ Player.prototype.getScore = function (num){
 };
 
 Player.prototype.getTotalScore = function () {
-  this.playerTotalScore += this.playerTurnScore
-  return this.playerTotalScore
+  this.playerTotalScore += this.playerTurnScore;
+  this.playerTurnScore = 0;
+  return this.playerTotalScore;
 }
 
 //Front End
