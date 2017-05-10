@@ -6,24 +6,33 @@ function Player(name, turnScore, totalScore) {
   this.playerTotalScore = totalScore;
 }
 
-Player.prototype.getDice = function () {
-  this.playerTurnScore += Math.floor(Math.random() * 6) + 1;
+function Game(activePlayer, activeRoll){
+  this.activePlayer = activePlayer;
+  this.activeRoll = activeRoll;
 }
 
-function addRoll(currentRoll, currentPlayer){
-  currentRoll + currentPlayer.turnScore;
+
+
+Game.prototype.getDice = function () {
+  this.activeRoll = Math.floor(Math.random() * 6) + 1;
 }
+
+Player.prototype.getScore = function (){
+  this.playerTurnScore += currentGame.getDice();
+}
+
 
 //Front End
 $(document).ready(function() {
   var player1 = new Player("player1", 0, 0);
   var player2 = new Player("player2", 0, 0);
+  var currentGame = new Game("game1", 0);
 
   $("#hit").click(function() {
     // player.getDice();
-    player1.getDice();
+    currentGame.getDice();
 
-    console.log(player1);
+  $("#diceId").text(currentGame.activeRoll);
 
   });
 
