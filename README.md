@@ -18,9 +18,13 @@ Each turn, a player repeatedly rolls a die until either a 1 is rolled or the pla
   - Input: 3
   - Output: turnScore = 3
 
-- If the player gets a number 1, the turnScore is discarded and its the next players turn
+- if the player gets a number 1, the turnScore is turned to 0
   - Input: 1
   - Output: 0
+
+- If the player gets a number 1, its the next players turn
+  - Input: 1
+  - Output: 0, next player's turn
 
 - If the player clicks the "hold" button instead of "roll", the players turnScore is added to the players totalScore and turnScore returns to 0
   - Input: totalScore = 5 player ; turnScore = 3 ; click = hold
