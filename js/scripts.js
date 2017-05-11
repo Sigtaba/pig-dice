@@ -7,11 +7,9 @@ function Player(name, turnScore, totalScore) {
 }
 
 function Game(activeName, activeRoll) {
-  this.gameName = activeName
+  this.gameName = activeName;
   this.activeRoll = activeRoll;
 }
-
-
 
 Game.prototype.getDice = function () {
   this.activeRoll = Math.floor(Math.random() * 6) + 1;
@@ -66,25 +64,31 @@ $(document).ready(function(playerNumber) {
 
   });//end click function
 
+
   $("#hold").click(function() {//when you click hold
-    // console.log(player1.getTotalScore());
-    console.log(player1);
     if (player1turn === true) {
-      console.log(player1);
-      // console.log(parseInt(player1.playerTurnScore) + parseInt(player1.player1TotalScore));
-      // (player1.getTotalScore());
-      // console.log(player1);
-      // console.log(player1.playerTotalScore);
       $("#totalScore1").text(player1.getTotalScore());
       player1turn = false;//makes player 2 the active player
       $("#playerId").text("Player 2");//tells the user player 2 is active
-
+      if (player1.playerTotalScore >= 100) {
+        alert("Player 1 wins!");
+        $("#totalScore1").text("");
+        $("#totalScore2").text("");
+      }
     }
     else if (player1turn === false) {
       $("#totalScore2").text(player2.getTotalScore());
       player1turn = true;//makes player 1 the active player
       $("#playerId").text("Player 1");//tells the user player 1 is active
+      if (player2.playerTotalScore >= 100) {
+        alert("Player 2 wins!");
+        $("#totalScore1").text("");
+        $("#totalScore2").text("");
+      }
     }
+    $("#turnScore").text("");
+    $("#diceId").text("");
+
   });
 
 });//end document ready
