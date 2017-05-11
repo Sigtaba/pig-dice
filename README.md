@@ -57,7 +57,7 @@ Each turn, a player repeatedly rolls a die until either a 1 is rolled or the pla
 
 ## Support and contact details
 
-_No known bugs._
+_in some instances, the player's turn score remains on the screen after they bust.  it is replaced by the other player's active turn score as soon a they roll, and doesn't seem to affect any functionality, but we can't figure out how to get it to stop showing up._
 
 ## Technologies Used
 
