@@ -53,21 +53,54 @@ $(document).ready(function(playerNumber) {
       $("#diceId").text(currentGame.activeSecondRoll);
       $("#turnScore").text(player1.playerTurnScore);//outputs player 1 turnScore to span id = "turnScore"
       //if statement within if statement
-      if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 1 has rolled a 1, then...
+      if ((currentGame.activeRoll === 1) && (currentGame.activeSecondRoll === 1)) {
+        player1.playerTotalScore = 0;
+        $("#totalScore1").text("");
+        $("#turnScore").text("");
+        player1turn = false;
+        $("#playerId").text("Player 2");
+        $("#diceImage").attr( "src", "img/none.png");
+        $("#diceImage2").attr( "src", "img/none.png");
+      }
+      else if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 1 has rolled a 1, then...
         player1turn = false;//makes player 2 the active player
-        $("#playerId").text("Player 2");//tells the user player 2 is active
+        setTimeout(function() {
+          $("#diceImage").attr( "src", "img/none.png");
+          $("#diceImage2").attr( "src", "img/none.png");
+          alert("Player 1, you busted!");
+          $("#playerId").text("Player 2");//tells the user player 2 is active
+          console.log(player1.playerTurnScore);
+          $("#turnscore").text(player1.playerTurnScore);
+        }, 100);
+
       };//end if statement within if statement
       //end if statement
     } else if (player1turn === false) {//if you click hit when it's player 2's turn...
       player2.getScore(currentGame.activeRoll);//random number is stored in player2.playerTurnScore
-      $("#turnScore").text(player2.playerTurnScore);//random number is displayed to user
+      player2.getScore(currentGame.activeSecondRoll);//second number is stored in player 2
+      $("#turnScore").text(player2.playerTurnScore);//player 2 turnscore is displayed to user
       //if statement within if statement
-      if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 2 rolls a 1...
+      if ((currentGame.activeRoll === 1) && (currentGame.activeSecondRoll === 1)) {//if player 2 rolls a single 1
+        player1turn = false;
+        $("#playerId").text("Player 1");
+        player2.playerTotalScore = 0;
+        $("#totalScore2").text("");
+        $("#turnScore").text("");
+        $("#diceImage").attr( "src", "img/none.png");
+        $("#diceImage2").attr( "src", "img/none.png");
+      } else if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 2 rolls 2 1s
         player1turn = true;//switch to player 1's turn
-        $("#playerId").text("Player 1");//tell user it's player 1's turn
+        setTimeout(function() { //some crazy fuckin magic that jared showed us
+          $("#diceImage").attr( "src", "img/none.png");
+          $("#diceImage2").attr( "src", "img/none.png");
+          alert("Player 2, you busted!");
+          $("#playerId").text("Player 1");//tell user it's player 1's turn
+          $("#turnscore").text(player2.playerTurnScore);
+        }, 100);
       };//end if statement within if statement
     };//else statement
 
+    //if dice one is x, display image x
     if (currentGame.activeRoll === 2) {
       $("#diceImage").attr( "src", "img/2.png");
     }
@@ -86,7 +119,7 @@ $(document).ready(function(playerNumber) {
     else {
       $("#diceImage").attr( "src", "img/1.png");
     }
-
+    //if dice 2 is x, display image x
     if (currentGame.activeSecondRoll === 2) {
       $("#diceImage2").attr( "src", "img/2.png");
     }
