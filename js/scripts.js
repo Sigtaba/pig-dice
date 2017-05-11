@@ -53,7 +53,7 @@ $(document).ready(function(playerNumber) {
       $("#diceId").text(currentGame.activeSecondRoll);
       $("#turnScore").text(player1.playerTurnScore);//outputs player 1 turnScore to span id = "turnScore"
       //if statement within if statement
-      if (currentGame.activeRoll === 1) {//if player 1 has rolled a 1, then...
+      if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 1 has rolled a 1, then...
         player1turn = false;//makes player 2 the active player
         $("#playerId").text("Player 2");//tells the user player 2 is active
       };//end if statement within if statement
@@ -62,7 +62,7 @@ $(document).ready(function(playerNumber) {
       player2.getScore(currentGame.activeRoll);//random number is stored in player2.playerTurnScore
       $("#turnScore").text(player2.playerTurnScore);//random number is displayed to user
       //if statement within if statement
-      if (currentGame.activeRoll === 1) {//if player 2 rolls a 1...
+      if ((currentGame.activeRoll === 1) || (currentGame.activeSecondRoll === 1)) {//if player 2 rolls a 1...
         player1turn = true;//switch to player 1's turn
         $("#playerId").text("Player 1");//tell user it's player 1's turn
       };//end if statement within if statement

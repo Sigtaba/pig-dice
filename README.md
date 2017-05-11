@@ -34,6 +34,22 @@ Each turn, a player repeatedly rolls a die until either a 1 is rolled or the pla
   - Input: Player 1 totalScore = 105
   - Output: Player 1 Wins!
 
+- Two dice are rolled. their sum is added to the turnScore
+  - Input: user clicks hit
+  - Output: dice1: 5 dice2: 3 turnScore = 8
+
+- If a single 1 is rolled the players turnScore is not added to the total and the turn is over
+ - Input: dice1 = 5 dice2 = 1
+ - Output: turnScore = 0
+
+- If two 1s are rolled the players totalScore is reset to 0 and the turn is over
+  - Input: dice1 = 1 dice2 = 1
+  - Output: totalScore = 0
+
+- If a double is rolled, the point total is added to turnScore and the player must roll again
+  - Input: dice1 = 5 dice2 = 5 user clicks "hold"
+  - Output: turnScore = 10 alert(you must continue your turn!)
+
 ## Setup/Installation Requirements
 
 * _Clone repository_
