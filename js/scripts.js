@@ -46,11 +46,11 @@ $(document).ready(function(playerNumber) {
 
   $("#hit").click(function() {//when you click "hit"
     currentGame.getDice();//generates random number and stores it in currentGame.activeRoll
-    // $("#diceId").text("<img src='img/pig.jpg'>");//displays that random number in span id = diceId
-        $("#dice-pic").show();
-
+    currentGame.getSecondDice();//generates second random number stores it in currentGame.activeSecondRoll
     if (player1turn === true) {//if player 1 is active, which it will be when the page is loaded, then...
       player1.getScore(currentGame.activeRoll);//random number is stored in player1.playerTurnScore
+      player1.getScore(currentGame.activeSecondRoll);//second random number is stored in player1.playerTurnScore
+      $("#diceId").text(currentGame.activeSecondRoll);
       $("#turnScore").text(player1.playerTurnScore);//outputs player 1 turnScore to span id = "turnScore"
       //if statement within if statement
       if (currentGame.activeRoll === 1) {//if player 1 has rolled a 1, then...
@@ -87,6 +87,24 @@ $(document).ready(function(playerNumber) {
       $("#diceImage").attr( "src", "img/1.png");
     }
 
+    if (currentGame.activeSecondRoll === 2) {
+      $("#diceImage2").attr( "src", "img/2.png");
+    }
+    else if (currentGame.activeSecondRoll === 3) {
+      $("#diceImage2").attr( "src", "img/3.png");
+    }
+    else if (currentGame.activeSecondRoll === 4) {
+      $("#diceImage2").attr( "src", "img/4.png");
+    }
+    else if (currentGame.activeSecondRoll === 5) {
+      $("#diceImage2").attr( "src", "img/5.png");
+    }
+    else if (currentGame.activeSecondRoll === 6) {
+      $("#diceImage2").attr( "src", "img/6.png");
+    }
+    else {
+      $("#diceImage2").attr( "src", "img/1.png");
+    }
 
 
   });//end click function
@@ -116,6 +134,7 @@ $(document).ready(function(playerNumber) {
     $("#turnScore").text("");
     $("#diceId").text("");
     $("#diceImage").attr( "src", "img/none.png");
+    $("#diceImage2").attr( "src", "img/none.png");
 
   });//end hold click function
 
